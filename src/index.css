@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --color-cream: #fdfbf7;
+  --color-forest: #064e3b;
+  --color-dark-bg: #0a100d;
+  --color-dark-surface: #121c17;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: #1c1917;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-color: var(--color-dark-bg);
+  color: #fdfbf7;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.glass {
+  background: rgba(253, 251, 247, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.dark .glass {
+  background: rgba(18, 28, 23, 0.85);
+  border: 1px solid rgba(6, 78, 59, 0.3);
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-2xl border border-stone-200/80 bg-white shadow-sm transition-colors duration-300 dark:border-emerald-900/30 dark:bg-[#121C17];
+  }
+
+  .input-field {
+    @apply min-h-11 w-full rounded-2xl border border-stone-200 bg-white px-4 py-2.5 text-sm text-stone-900 shadow-sm outline-none transition-colors duration-300 placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-emerald-900/30 dark:bg-[#0A100D] dark:text-[#FDFBF7] dark:placeholder:text-gray-500 dark:focus:border-emerald-600 dark:focus:ring-emerald-600/20;
+  }
+
+  .textarea-field {
+    @apply w-full rounded-2xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-colors duration-300 placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-emerald-900/30 dark:bg-[#0A100D] dark:text-[#FDFBF7] dark:placeholder:text-gray-500 dark:focus:border-emerald-600 dark:focus:ring-emerald-600/20;
+  }
+
+  .heading-primary {
+    @apply font-serif text-emerald-900 transition-colors duration-300 dark:text-[#FDFBF7];
+  }
+
+  .text-muted {
+    @apply text-stone-600 transition-colors duration-300 dark:text-gray-400;
+  }
+
+  .text-subtle {
+    @apply text-stone-500 transition-colors duration-300 dark:text-gray-400;
+  }
+}
